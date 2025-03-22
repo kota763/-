@@ -1,0 +1,766 @@
+* {
+    box-sizing: border-box;
+    }
+    html {
+    scroll-padding-top: 60px; 
+    }
+
+    body {
+    margin: 0;
+    font-family: "游明朝","Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    /* background-color:antiquewhite; */
+    }
+/* ヘッダー全体のコンテナを相対位置にする */
+/* ヘッダー全体のコンテナ */
+.header-container {
+    display: flex; /* 横並びに配置 */
+    align-items: center; /* 縦方向を中央揃え */
+    justify-content: center; /* 左揃え */
+    gap: 20px; /* ロゴとスライドショー間のスペース */
+    padding: 20px; /* 全体の余白 */
+}
+
+/* ロゴのスタイル */
+.logo {
+    width: 200px; /* ロゴの幅を指定 */
+    height: auto; /* 高さを比率に合わせて調整 */
+}
+
+/* スライドショーコンテナ */
+.image-container {
+    width: 350px; /* スライドショーの幅を指定 */
+    height: 350px; /* スライドショーの高さを指定 */
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 縦方向を中央揃え */
+    overflow: hidden; /* 画像のはみ出しを隠す */
+    border-radius: 15px; /* 角丸にする */
+    background-color: #f0f0f0; /* 背景色 */
+    border: 5px solid rgb(237, 141, 85); /* 外枠を青にする */
+    border-radius: 50%; /* 外枠を丸くする */
+}
+
+/* スライドショー画像のスタイル */
+.image-container img {
+    width: 100%; /* スライドショーの幅に合わせる */
+    height: 100%; /* スライドショーの高さに合わせる */
+    object-fit: cover; /* 画像の中央を基準にトリミング */
+}
+/* 基本設定 */
+* {
+    box-sizing: border-box; /* パディングやボーダーを含めたサイズ計算 */
+    margin: 0;
+    padding: 0;
+}
+
+/* ヘッダー全体 */
+header {
+    height: 100px; /* ヘッダーの高さ */
+    width: 100%; /* ヘッダーの幅 */
+    padding: 0 15px; /* 左右に余白を追加 */
+    background-color: rgb(255, 255, 255); /* 背景色 */
+    border-bottom: 3px solid rgb(255, 132, 0); /* 下に線を追加 */
+    position: fixed; /* ヘッダーを固定 */
+    top: 0;
+    z-index: 30; /* 前面に配置 */
+    display: flex; /* 子要素を横並びに */
+    align-items: center; /* 縦方向で中央揃え */
+    justify-content: space-between; /* 左右に要素を配置 */
+}
+
+/* メニュー内の要素配置 */
+.menu {
+    display: flex; /* 子要素を横並びに */
+    align-items: center; /* 縦方向で中央揃え */
+    justify-content: flex-end; /* 右端に寄せる */
+    gap: 20px; /* 子要素間の余白 */
+}
+
+/* 画像のスタイル */
+.header-image {
+    height: 80px; /* 高さを指定 */
+    width: auto; /* 比率を維持 */
+    border-radius: 5px; /* 角丸にする */
+}
+
+/* リンクのスタイル */
+.header-link {
+    text-decoration: none; /* 下線を削除 */
+    color: rgb(255, 255, 255); /* テキストカラー */
+    font-size: 18px; /* フォントサイズ */
+    font-weight: bold; /* 太字にする */
+    padding: 8px 16px; /* 内側の余白 */
+    border: 1px solid #FF4500; /* 枠線を追加 */
+    border-radius: 5px; /* 角を丸くする */
+    background-color: #FF4500;
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+/* リンクのホバー時のスタイル */
+.header-link:hover {
+    background-color: #d82828; /* 背景色を変更 */
+    color: black; /* テキストカラーはそのまま */
+}
+/* 説明文 */
+/* 今すぐのテキストの強調 */
+.highlight {
+    color: red; /* 赤字にする */
+    font-weight: bold; /* 太文字 */
+    font-size: 1.2rem; /* 少し大きくする */
+}
+/* マニュアル */
+/* マニュアル全体のスタイル */
+.manual {
+    text-align: center;
+    margin: 50px 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.manual_title {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #fc5a24; /* 暖色: サーモンピンク */
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #fff; /* 白い枠線 */
+    margin-bottom: 10px;
+}
+
+.manual_subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+/* お品書き */
+/* お品書きセクション全体 */
+.menu1 {
+    margin: 50px auto; /* 上下の余白を50px、左右を自動で中央揃え */
+    padding: 30px;
+    max-width: 800px; /* セクション全体の幅を制限して中央に配置 */
+    background-color: #fef8e8; /* 柔らかい暖色 */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: left; /* 全体を中央揃え */
+}
+
+/* タイトルデザイン */
+.menu_title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d35400; /* 暖色系のオレンジ */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #d35400;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* 説明文 */
+.menu_description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* 各ポイント全体 */
+.menu_points {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 中央揃え */
+    gap: 20px;
+}
+
+/* ポイントデザイン */
+.menu_point {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    border: 2px solid #f39c12; /* 暖色系 */
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* テキストを左揃えに */
+}
+
+.menu_point:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 番号デザイン */
+.point_number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e67e22; /* 暖色系オレンジ */
+    margin-right: 10px;
+}
+
+/* テキストデザイン */
+.point_text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* ハイライト */
+.highlight {
+    font-weight: bold;
+    color: #e74c3c; /* 強調の赤色 */
+}
+
+
+/* ステップのカードデザイン */
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.step_card {
+    background: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.step_number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff4500;
+    margin-bottom: 10px;
+}
+
+.step_text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* ボタンの強調 */
+.highlight {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.btn-start {
+    display: inline-block;
+    background-color: #ff4500;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-start:hover {
+    background-color: #ff6347;
+    transform: translateY(-5px);
+}
+
+
+
+/* ここから本文 */
+/* メインコンテンツ */
+main {
+    padding: 0 60px;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    margin-top: 120px; /* ヘッダー分の余白を確保 */
+}
+
+/* ログインや登録セクション */
+/* ボタン全体のスタイル */
+/* 親要素の中央揃え設定 */
+.click_btn {
+    text-align: center;
+    display: flex; /* フレックスボックスを適用 */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    margin: 40px 0; /* 上下に余白 */
+    font-family: Arial, sans-serif; /* モダンなフォント */
+}
+/* ボタンのデザイン */
+.btn-start {
+    display: inline-block; /* ブロックのように扱う */
+    background-color: #FF4500; /* 明るいオレンジ色 */
+    color: white; /* 文字色は白 */
+    padding: 15px 30px; /* ボタンのパディング */
+    border-radius: 30px; /* 丸みを帯びたボタン */
+    font-size: 1.2rem; /* 少し大きめの文字 */
+    text-decoration: none; /* 下線なし */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がった感じ */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* ホバー時の変化を滑らかに */
+}
+.btn-start:hover {
+    background-color: #FF6347; /* ホバー時の色を少し明るく */
+    transform: translateY(-5px); /* 上に少し浮かせる */
+}
+
+.custom-btn {
+    display: flex;
+    align-items: center; /* アイコンとテキストを縦方向に中央揃え */
+    justify-content: center; /* 中央揃え */
+    background-color: #ffa74e; /* ボタンの背景色 */
+    color: rgb(0, 0, 0); /* テキストの色 */
+    padding: 10px 20px; /* ボタンの内側余白 */
+    border-radius: 5px; /* ボタンの角を丸く */
+    border: none; /* ボーダーを消す */
+    font-size: 18px; /* フォントサイズ */
+    font-weight: bold; /* テキストを強調 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+/* ボタンのホバー時 */
+.custom-btn:hover {
+    background-color: #ff6044; /* ホバー時に色を変更 */
+    transform: scale(1.05); /* 少し拡大 */
+}
+
+/* アイコンのスタイル */
+.btn-icon {
+    width: 50px; /* アイコンの幅 */
+    height: 40px; /* アイコンの高さ */
+    margin-right: 10px; /* アイコンとテキストの間の余白 */
+}
+
+/* 検索画面 */
+/* セクション全体のスタイル */
+.calc_func {
+    text-align: center; /* セクション全体を中央揃え */
+    margin: 20px auto; /* 上下に余白を追加 */
+    padding: 20px; /* 内側の余白 */
+    border: 2px solid #ccc; /* ボーダーを追加 */
+    border-radius: 10px; /* コーナーを丸く */
+    background-color: #f9f9f9; /* 背景色 */
+    max-width: 600px; /* 横幅を制限 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 軽い影 */
+}
+
+/* タイトルのスタイル */
+.calc_func h3 {
+    font-size: 24px; /* タイトルを大きく */
+    color: #333; /* テキストカラー */
+    margin-bottom: 10px; /* タイトル下に余白を追加 */
+    font-weight: bold;
+}
+/* スライダー全体のスタイル */
+.calc_func p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* スライダーラベル（画像＋テキスト）のスタイル */
+.slider-label1 {
+    display: flex;
+    flex-direction: column; /* 画像とテキストを縦並び */
+    align-items: flex-start; /* 左揃え */
+    text-align: center;
+    gap: 5px; /* 画像とテキストの間隔 */
+}
+.slider-label2 {
+    display: flex;
+    flex-direction: column; /* 画像とテキストを縦並び */
+    align-items: flex-end; /* 右揃え */
+    text-align: center;
+    gap: 5px; /* 画像とテキストの間隔 */
+}
+
+/* スライダー画像のスタイル */
+.slider-image {
+    width: 60px; /* 画像の幅 */
+    height: 60px; /* 画像の高さ */
+    border-radius: 50%; /* 丸く切り取る */
+    object-fit: cover; /* 画像の比率を維持しながら表示 */
+    border: 2px solid #000000; /* 青色の枠線 */
+}
+
+
+
+/* スライダーのスタイル */
+.input-range {
+    appearance: none; /* デフォルトスタイルを無効化 */
+    width: 60%; /* スライダーの幅を指定 */
+    height: 10px; /* スライダーの高さを調整 */
+    background: linear-gradient(to right, #777575, #f44336); /* グラデーション */
+    border-radius: 5px; /* 丸みを帯びたバー */
+    outline: none; /* フォーカス時の青枠を削除 */
+    cursor: pointer; /* ポインタを変更 */
+    margin: 0 10px; /* スライダーとラベルの余白 */
+}
+
+/* スライダーハンドルのスタイル */
+.input-range::-webkit-slider-thumb {
+    appearance: none; /* デフォルトスタイルを無効化 */
+    width: 20px; /* ハンドルの幅 */
+    height: 20px; /* ハンドルの高さ */
+    background: #ffffff; /* ハンドルの色 */
+    border-radius: 50%; /* 丸いハンドル */
+    cursor: pointer; /* ポインタを変更 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 軽い影 */
+}
+
+/* スライダーをドラッグしたときのハンドルスタイル */
+.input-range::-webkit-slider-thumb:active {
+    background: #dcdcdc; /* アクティブ時のハンドル色変更 */
+}
+/* ラベルの画像スタイル */
+.label-image {
+    width: 50px; /* 画像の幅 */
+    height: auto; /* アスペクト比を維持 */
+    border-radius: 5px; /* 角を丸く */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 軽い影 */
+}
+
+/* 質問の吹き出し */
+/* 吹き出し全体のスタイル */
+.bubble-container {
+    display: flex;
+    justify-content: flex-start; /* 左揃え */
+    margin-bottom: 20px; /* 吹き出しと次の要素の間隔 */
+}
+
+/* 吹き出しのデザイン */
+.bubble {
+    position: relative;
+    background: #ffa3a3;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px 20px;
+    max-width: 400px; /* 吹き出しの幅 */
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 吹き出しの左側の三角形 */
+.bubble::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* 吹き出しの中央揃え */
+    left: -15px; /* 吹き出しの左外側に配置 */
+    transform: translateY(-50%); /* 三角形を垂直方向の中央に配置 */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 15px 10px 0; /* 三角形のサイズ */
+    border-color: transparent #f9f9f9
+    transparent transparent; /* 吹き出しの背景色と一致 */
+    z-index: 1;
+}
+
+/* 三角形の境界線（枠線） */
+.bubble::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -17px; /* 吹き出しの左外側に配置 */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 17px 12px 0; /* 三角形のサイズ */
+    border-color: transparent #ccc transparent transparent; /* 吹き出し枠線と一致 */
+    z-index: 0;
+}
+/* フォーム全体のスタイル */
+.narrow_wrapper {
+    display: flex;
+    flex-direction: column; /* 上下に配置 */
+    align-items: center;
+    gap: 20px; /* 各フォーム間の余白 */
+}
+
+/* ラベルのデザイン (h3サイズに変更) */
+.cp_sl06_selectlabel {
+    font-size: 24px; /* h3と同じサイズ */
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px; /* ラベルとセレクトボックス間の余白 */
+    text-align: center; /* 中央揃え */
+}
+
+/* セレクトボックスのデザイン */
+.select-container {
+    position: relative;
+    width: 300px;
+}
+
+.cp_sl06 {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    appearance: none; /* デフォルトの矢印を消す */
+}
+
+/* 複数選択フォーム */
+.select-container {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+.custom-select {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.custom-option {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.custom-option:last-child {
+    border-bottom: none;
+}
+
+.custom-option:hover, .custom-option.selected {
+    background: #007BFF;
+    color: white;
+}
+
+.selected-options {
+    padding: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: white;
+}
+
+
+/* セレクトボックスの矢印 */
+.cp_sl06::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* セレクトボックスのホバー時 */
+.cp_sl06:hover {
+    border-color: #ff6022;
+    background-color: #ffeae6;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    .bubble {
+        max-width: 90%; /* スマホでは幅を調整 */
+        font-size: 18px;
+    } 
+
+    .cp_sl06 {
+        width: 100%;
+    }
+}
+
+/* 検索結果画面 */
+/* 全体のデザイン */
+.result_main {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    background-color: #fdf8e6; /* 背景色をオレンジ色に設定 */
+    padding: 20px; /* コンテナ内に余白を追加 */
+    min-height: 100vh; /* コンテナが画面全体に広がるように */
+    padding-top: 100px; /* ヘッダーの高さ（100px）に余裕を持たせた余白を設定 */
+}
+
+/* .result_title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+} */
+
+/* カードデザイン */
+.result_card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* 内側の余白 */
+    margin-bottom: 30px;
+}
+
+.result_header h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.result_no {
+    font-size: 25px;
+    color: #da370f;
+}
+
+.result_name {
+    font-weight: bold;
+    color: #444;
+}
+
+/* 店舗画像 */
+.result_img_link {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.result_img {
+    width: 100%;
+    max-width: 300px; 
+    /* 画像の最大幅 */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover; /* アスペクト比を保ちながら画像を調整 */
+    border: 1px solid #ddd;
+/* 小さな画像（150x150）をリサイズして大きさを統一 */
+}
+/* 店舗情報 */
+.result_info p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* ボタンデザイン */
+.result_buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-back {
+    background-color: #6c757d;
+}
+
+.btn-back:hover {
+    background-color: #5a6268;
+}
+
+
+.btn-primary {
+    background-color: #ff9c1b;
+}
+
+.btn-primary:hover {
+    background-color: #c89530;
+}
+
+.btn-back1 {
+    background-color: #32d358;
+}
+
+.btn-back1:hover {
+    background-color: #30a84a;
+}
+.btn-next {
+    background-color: #ff7aa2;
+}
+
+.btn-next:hover {
+    background-color: #c75ba5;
+}
+.btn-top {
+    background-color: #4ccaf4;
+}
+
+.btn-top:hover {
+    background-color: #3d99c1;
+}
+/* ボタンのスタイル */
+.result_btn2 .btn {
+    display: inline-block;
+    padding: 12px 24px; /* ボタンの大きさ */
+    background-color: #6c757d; /* 緑色の背景 */
+    color: white; /* 白い文字 */
+    font-size: 16px; /* フォントサイズ */
+    text-align: center; /* 中央揃え */
+    text-decoration: none; /* リンクの下線を消す */
+    border-radius: 5px; /* 丸みを帯びた角 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 軽い影 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* ホバー時のアニメーション */
+}
+
+/* ホバー時のスタイル */
+.result_btn2 .btn:hover {
+    background-color: #5a6268; /* ホバー時の色変更 */
+    transform: translateY(-2px); /* ボタンを少し浮き上がらせる */
+}
+
+/* フォーカス時のスタイル */
+.result_btn2 .btn:focus {
+    outline: none; /* フォーカス時の枠線を消す */
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.5); /* 薄い緑の枠線 */
+}
+
+/* フッターの設定 */
+footer {
+    width: 100%; /* 幅いっぱいを指定 */
+    height: 80px; /* 高さを指定 */
+    /* padding-top: 20px; */
+    display: inline-block;
+    background: white; /* 背景色を指定 */
+    text-align: center;
+    /* position: fixed; */
+    bottom: 0;
+    border-top:rgb(237, 141, 85) 3px solid;
+}
+.footer_logo {
+    margin: 10px auto;
+}
+.footer_logo p {
+    margin: 0 auto;
+    font-size: 13px;
+}

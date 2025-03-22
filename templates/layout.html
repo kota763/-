@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- cssファイルの読み込み -->
+    <link rel=stylesheet href="../static/css/style.css">
+    <!-- ファビコンの設定 -->
+    <link rel="icon" href="../static/images/icon.ico">
+
+    <title>れこ麺堂 東京のラーメン店検索サイト</title>
+    <script>
+        async function handleClick() {
+            const response = await fetch('/result_more');
+            const count = await response.text();
+            document.getElementById('count').textContent = count;
+        }
+
+        async function handleBack() {
+            const response = await fetch('/result_less');
+            const count = await response.text();
+            document.getElementById('count').textContent = count;
+        }
+    </script>
+    <meta name="google-site-verification" content="0-r3tbR5y19T3LUcLhUzobmAMOkF39Ts2UMaVLPQ8ys" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href='/'>
+                <img src="../static/images/aikon.jpeg" alt="サイトロゴ"width="140">
+            </a>
+        </div>
+
+        <div class="menu">
+            <!-- れこ麺マニュアルへのリンク -->
+            <a href="#howto" class="header-image-link">
+                <img src="../static/images/IMG_manyuaru.jpeg" alt="manual" class="header-image">
+            </a>
+            <!-- お品書きへのリンク -->
+            <a href="#menu1" class="header-image-link">
+                <img src="../static/images/IMG_menu.jpeg" alt="menu" class="header-image">
+            </a>
+            <a href="/calc" class="header-link">れこ麺開始！</a>
+        </div>
+    </header>
+<!-- templateの継承部分 -->
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <div class="footer_logo">
+            <p><span>このサイトは食べログの情報をもとに制作しています。</span></p>
+            <p><span>お取り扱いのない店舗様もございます。何卒ご了承くださいませ。</span></p>
+        </div>
+        <div class="footer_logo">©︎ れこ麺店主</div>
+    </footer>
+</body>
+</html>

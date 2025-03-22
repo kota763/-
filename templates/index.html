@@ -1,0 +1,110 @@
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ホーム</title>
+</head>
+<body>
+    <h1>ホーム画面</h1>
+    <a href="/login">ログイン</a>
+    <a href="/register">新規会員登録</a>
+</body>
+</html> -->
+
+{% extends "layout.html" %}
+{% block content %}
+<main>
+    <section class="top">
+        <div class="header-container">
+            <!-- ロゴを左側に配置 -->
+            <div class="toplogo">
+                <img src="../static/images/top.jpeg"alt="logo">
+            </div>
+            <!-- 画像を切り替えるスライドショー -->
+            <div class="image-container">
+                <img id="slideshow" src="../static/images/IMG_1.PNG">
+            </div>
+        </div>
+
+        <script>
+            // 画像のリスト
+            const images = [
+                "../static/images/IMG_1.PNG",
+                "../static/images/IMG_2.PNG",
+                "../static/images/IMG_3.PNG",
+                "../static/images/IMG_4.PNG",
+                "../static/images/IMG_5.PNG",
+                "../static/images/IMG_6.PNG",
+            ];
+            let currentIndex = 0; // 現在の画像インデックス
+            const slideshowElement = document.getElementById("slideshow");
+
+            // 3秒ごとに画像を切り替える
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length; // 次の画像に変更（ループ）
+                slideshowElement.src = images[currentIndex]; // 画像を変更
+            }, 2000); // 2秒ごとに切り替え
+        </script>
+
+        </div>
+        <div class="click_btn">
+            <h3><span class="highlight">今すぐ </span>れこ麺したい方はこちら！</h3>
+            <a  href = "/calc" class="btn-start">▸ れこ麺開始！</a>
+        </div>
+    </section >
+    
+    <section  class="howto" id="howto">
+        <div class="manual">
+            <h1 class="manual_title">れこ麺マニュアル</h1>
+            <p class="manual_subtitle">使い方は超シンプルな3ステップ！</p>
+            <div class="steps">
+                <div class="step_card">
+                    <div class="step_number">1</div>
+                    <p class="step_text"><span class="highlight">れこ麺開始ボタン</span>をクリック！</p>
+                </div>
+                <div class="step_card">
+                    <div class="step_number">2</div>
+                    <p class="step_text">注文ページで<br><span class="highlight">ラーメン店の<br>ご希望条件</span><br>を選択！</p>
+                </div>
+                <div class="step_card">
+                    <div class="step_number">3</div>
+                    <p class="step_text"><span class="highlight">れこ麺完了！</span></p>
+                </div>
+            </div>
+        </div>
+    </section > 
+    <section class="menu1" id="menu1">
+        <div class="menu_container">
+            <h1 class="menu_title">お品書き</h1>
+            <p class="menu_description">お取り扱いしているラーメン店はこちら！</p>
+            <div class="menu_points">
+                <div class="menu_point">
+                    <div class="point_number">1</div>
+                    <p class="point_text">
+                        <span class="highlight">東京の渋谷・池袋・新宿</span>の約500店舗からピックアップ！ 
+                        （いずれも駅から徒歩10分圏内！）
+                    </p>
+                </div>
+                <div class="menu_point">
+                    <div class="point_number">2</div>
+                    <p class="point_text">
+                        味は驚きの<span class="highlight">8種類</span>から選べる！
+                        （醤油・味噌・煮干し・家系・つけ麺・油そば・塩・魚介）
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section  class="page_move" id="page_move">
+        <div class="click_btn"></div>
+            <h1>ぜひご来店ください！</h1>
+            <a  href = "/calc" class="btn-start">▸ れこ麺開始！</a>
+        </div>
+    </section >
+</main>
+
+{% endblock %}

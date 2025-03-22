@@ -1,0 +1,492 @@
+<!-- <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検索結果画面</title>
+</head>
+<body>
+    <h1>検索結果</h1>
+    <p>検索キーワード: <strong>{{ query }}</strong></p> 検索キーワードを表示 -->
+
+    <!-- 遷移先のリンク -->
+    <!-- <br>
+    <a href="/home">ホームに戻る</a><br>
+    <a href="/search">検索画面に戻る</a>
+</body>
+</html> -->
+
+<!-- {% extends "layout.html" %}
+{% block content %} -->
+<!-- <main class="result_main">
+    {% if output["len"]-output["pickup_count"] >=1 %}
+    <h1>おすすめの店舗はこちら！</h1>
+    <div class="result_item" id="result1">
+        <div class="result_name">
+            <h2>
+                <span>れこ麺No.<span id="count">{{ output["pickup_count"]+1 }}</span></span>
+                <span class="bold">「{{ output["store_name"][0] }}」</span>
+            </h2>
+        </div>
+        <a class="result_btn" href="{{ output["link_url"][0] }}" target="_blank">
+            <img src="{{ output["picture_url"][0] }}" alt="">
+        </a>
+        <p>
+            <span class="bold">場所</span>：<span class="bold">{{ output["place_list"][0] }}</span>　　　
+            <span class="bold">口コミ予算</span>：<span class="bold">{{ output["price_range"][0] }}</span>　　　
+        </p>
+    </div>
+    <div class="result_navi">
+        {% if output["pickup_count"] != 0 %}
+        <div class="result_btn3" >
+            <form action="/result_less" method="POST">
+                <button onclick="handleBack()">◂ 前のページに戻る</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="result_btn3" >
+            <a href="/calc">◂ ご注文ページに戻る</a>
+        </div>  
+        {% endif %} 
+        <div class="result_btn3" >
+            <a href="{{ output["link_url"][0] }}" target="_blank">食べログページへ</a>
+        </div>
+        <div class="result_btn3" >
+            <a href="/result#result2" class="jump_point">次のれこ麺へ ▸</a>
+        </div>
+    </div>
+    {% endif %} -->
+<main class="result_main">
+    {% if output["len"] - output["pickup_count"] >= 1 %}
+    <div class="bubble-container" id="result">
+        <div class="bubble">
+            <h1>れこ麺が出ました！</h1>
+        </div>
+    </div>
+    <br>
+    <div class="result_card" id="result1">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 1 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][0] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][0] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][0] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][0] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][0] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            {% if output["pickup_count"] != 0 %}
+            <form action="/result_less" method="POST">
+                <button class="btn btn-back" onclick="handleBack()">◂ 前のページに戻る</button>
+            </form>
+            {% else %}
+            <a href="/calc" class="btn btn-back">◂ ご注文ページへ</a>
+            {% endif %}
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result2">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    
+
+    {% if output["len"] - output["pickup_count"] >= 2 %}
+    <div class="result_card" id="result2">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 2 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][1] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][1] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][1] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][1] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][1] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result1">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][1] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result3">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    {% if output["len"] - output["pickup_count"] >= 3 %}
+    <div class="result_card" id="result3">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 3 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][2] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][2] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][2] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][2] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][2] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result2">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][2] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result4">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    {% if output["len"] - output["pickup_count"] >= 4 %}
+    <div class="result_card" id="result4">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 4 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][3] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][3] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][3] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][3] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][3] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result3">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][3] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result5">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    {% if output["len"] - output["pickup_count"] >= 5 %}
+    <div class="result_card" id="result5">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 5 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][4] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][4] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][4] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][4] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][4] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result4">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][4] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result6">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- ↓ 以下、コメントアウトされているブロック内も "range_money" → "price_range" に置き換え -->
+    {% if output["len"] - output["pickup_count"] >= 6 %}
+    <div class="result_card" id="result6">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 6 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][5] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][5] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][5] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][5] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][5] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result5">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][5] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result7">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    {% if output["len"] - output["pickup_count"] >= 7 %}
+    <div class="result_card" id="result7">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 7 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][6] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][6] }}" target="_blank">
+            <img class="result_img" 
+            src="{{ output["picture_url"][6] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][6] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][6] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result6">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][6] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result8">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    {% if output["len"] - output["pickup_count"] >= 8 %}
+    <div class="result_card" id="result8">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 8 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][7] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][7] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][7] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][7] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][7] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result7">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][7] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result9">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    {% if output["len"] - output["pickup_count"] >= 9 %}
+    <div class="result_card" id="result9">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 9 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][8] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][8] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][8] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][8] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][8] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result8">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][8] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-next" href="#result10">次のれこ麺へ ▸<a>
+        </div>
+    </div>
+    {% endif %}
+    {% if output["len"] - output["pickup_count"] >= 10 %}
+    <div class="result_card" id="result10">
+        <!-- 店舗情報カード -->
+        <div class="result_header">
+            <h2>
+                <span class="result_no">れこ麺No.<span id="count">{{ output["pickup_count"] + 10 }}</span></span>
+                <span class="result_name">「{{ output["store_name"][9] }}」</span>
+            </h2>
+        </div>
+        <a class="result_img_link" href="{{ output["link_url"][9] }}" target="_blank">
+            <img class="result_img" 
+                src="{{ output["picture_url"][9] }}">
+        </a>
+        <!-- 食べログページ -->
+        <!-- <a class="btn btn-primary" href="{{ output["link_url"][0] }}" target="_blank">
+            食べログページへ
+        </a> -->
+        <div class="result_info">
+            <p>
+                <span class="bold">場所：</span>{{ output["place_list"][9] }}　　
+                <span class="bold">ご予算：</span>{{ output["price_range"][9] }}
+            </p>
+        </div>
+        <div class="result_buttons">
+            <!-- 戻るボタン -->
+            <div class="result_btn3" >
+                <a class="btn btn-back1" href="#result9">◂ 前のれこ麺へ</a>
+            </div>
+    
+            <!-- 食べログページ -->
+            <a class="btn btn-primary" href="{{ output["link_url"][9] }}" target="_blank">
+                食べログページへ
+            </a>
+    
+            <!-- 次の店舗 -->
+            <a class="btn btn-top" href="#result" class="jump_point">ページの先頭に戻る</a>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if output["pickup_count"] > output["len"] %}
+    <p>この条件のラーメン店は他にありません</p>
+    {% endif %}
+
+    <section class="endpage">
+        <!-- {% if output["pickup_count"] != 0 %}
+        <div class="result_btn2" >
+            <form action="/result_less" method="POST">
+                <button onclick="handleBack()">◂ 前のページに戻る</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="result_btn2" >
+            <a href="/calc">◂ 前のページに戻る</a> -->
+        <!-- </div>  
+        {% endif %}  -->
+        <div class="result_btn2">
+            <a href="/calc" class="btn">ご注文のやり直しはこちら</a>
+        </div>
+        
+        <!-- <div class="result_btn2" >
+            <form action="/result_more" method="POST">
+                <button onclick="handleClick()">次のページを見る ▸</button>
+            </form>
+        </div>    -->
+    </section>
+</main>
+{% endblock %}

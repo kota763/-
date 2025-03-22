@@ -1,0 +1,208 @@
+<!-- {% extends "index.html" %}
+{% block content %} -->
+<main>
+    <form action="/calc" method="POST">
+        <section class="calc_wrapper">
+            <div class="bubble-container">
+                <div class="bubble">
+                    <h2>どんなラーメン店をお探しですか？</h2>
+                </div>
+            </div>
+            <div class="calc_item">
+                <div class="calc_func">
+                    <h3>Q1. 味の評判は？</h3>
+                    <p>
+                        <label>
+                            <!-- 気にしないの画像とテキスト -->
+                            <div class="slider-label1">
+                                <img src="../static/images/IMG_left.jpeg" alt="気にしない" class="slider-image">
+                                <span>気にしない</span>
+                            </div>
+                            <input type="range" class="input-range" name="food_rank" min="0" max="1" step="0.01" value="0.5">
+                            <!-- 重視するの画像とテキスト -->
+                            <div class="slider-label2">
+                                <img src="../static/images/IMG_right.jpeg" alt="重視する" class="slider-image">
+                                <span>重視する！</span>
+                            </div>
+                        </label>
+                    </p>
+                </div>
+            </div>         
+            <div class="calc_item">
+                <div class="calc_img"><img src="../static/images/satisfy_image.jpg" alt=""></div>
+                <div class="calc_func">
+                    <h3>Q2. サービスの良さは？</h3>
+                    <p>
+                        <label>
+                            <!-- 気にしないの画像とテキスト -->
+                            <div class="slider-label1">
+                                <img src="../static/images/IMG_left.jpeg" alt="気にしない" class="slider-image">
+                                <span>気にしない</span>
+                            </div>
+                            <input type="range" class="input-range" name="service_rank" min="0" max="1" step="0.01" value="0.5">
+                            <!-- 重視するの画像とテキスト -->
+                            <div class="slider-label2">
+                                <img src="../static/images/IMG_right.jpeg" alt="重視する" class="slider-image">
+                                <span>重視する！</span>
+                            </div>
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class="calc_item">
+                <div class="calc_img"><img src="../static/images/insta_image.jpg" alt=""></div>
+                <div class="calc_func">
+                    <h3>Q3. お店の雰囲気は？</h3>
+                    <p>
+                        <label>
+                            <!-- 気にしないの画像とテキスト -->
+                            <div class="slider-label1">
+                                <img src="../static/images/IMG_left.jpeg" alt="気にしない" class="slider-image">
+                                <span>気にしない</span>
+                            </div>
+                            <input type="range" class="input-range" name="atmosphere_rank" min="0" max="1" step="0.01" value="0.5">
+                            <!-- 重視するの画像とテキスト -->
+                            <div class="slider-label2">
+                                <img src="../static/images/IMG_right.jpeg" alt="重視する" class="slider-image">
+                                <span>重視する！</span>
+                            </div>
+                        </label>
+                    </p>
+                </div>
+            </div>
+        </section>
+            <br>
+            <br>
+            <br>
+            <br>
+            <section class="narrow_wrapper">
+                <div class="bubble-container">
+                    <div class="bubble">
+                        <h2>条件を絞ろう！</h2>
+                    </div>
+                </div>
+                <br>
+                <!-- <div class="narrow">
+                    <label for="money-narrow" class="cp_sl06_selectlabel">Q4. ご予算は？</label>
+                    <div class="select-container">
+                        <select name="money" id="money-narrow" class="cp_sl06">
+                            <option value="1000">~1000円</option>
+                            <option value="2000">1000円~2000円</option>
+                            <option value="3000">2000円~3000円</option>
+                            <option value="4000">3000円~4000円</option>
+                            <option value="all">気にしない</option>
+                        </select>
+                    </div>
+                </div> -->
+                <div class="narrow">
+                    <label for="money-narrow" class="cp_sl06_selectlabel">Q4. ご予算は？</label>
+                    <div class="select-container">
+                        <div class="selected-options" onclick="toggleDropdown()">選択してください</div>
+                        <div id="custom-select" class="custom-select">
+                            <div class="custom-option" data-value="1000">~1000円</div>
+                            <div class="custom-option" data-value="2000">1000円~2000円</div>
+                            <div class="custom-option" data-value="3000">2000円~3000円</div>
+                            <div class="custom-option" data-value="4000">3000円~4000円</div>
+                            <div class="custom-option" data-value="all">気にしない</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 隠しフィールドを追加 -->
+                <input type="hidden" name="money" id="max_money_input">
+                <br>
+                <div class="narrow">
+                    <label for="place-narrow" class="cp_sl06_selectlabel">Q5. どの駅周辺？</label>
+                    <div class="select-container">
+                        <select name="place" id="place-narrow" class="cp_sl06">
+                            <option value="池袋">池袋駅</option>
+                            <option value="渋谷">渋谷駅</option>
+                            <option value="新宿">新宿駅</option>
+                            <option value="all">どの駅でも！</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="narrow">
+                    <label for="scene-narrow" class="cp_sl06_selectlabel">Q6. ご利用シーンは？</label>
+                    <div class="select-container">
+                        <select name="scene" id="scene-narrow" class="cp_sl06">
+                            <option value="a">ご家族とまったり</option>
+                            <option value="b">おひとりでごゆっくり</option>
+                            <option value="c">ご友人と楽しく</option>
+                            <option value="all">気にしない！</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="narrow">
+                    <label for="taste-narrow" class="cp_sl06_selectlabel">Q7. どの味の気分？</label>
+                    <div class="select-container">
+                        <select name="taste" id="taste-narrow" class="cp_sl06">
+                            <option value="A">油そば</option>
+                            <option value="B">味噌</option>
+                            <option value="C">家系</option>
+                            <option value="D">魚介</option>
+                            <option value="E">豚骨</option>
+                            <option value="F">つけめん</option>
+                            <option value="G">醤油</option>
+                            <option value="H">にぼし</option>
+                            <option value="all">どれでも！</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                let selectedValues = [];
+            
+                function toggleDropdown() {
+                    let dropdown = document.getElementById("custom-select");
+                    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+                }
+            
+                document.querySelectorAll(".custom-option").forEach(option => {
+                    option.addEventListener("click", function() {
+                        let value = this.getAttribute("data-value");
+            
+                        if (selectedValues.includes(value)) {
+                            selectedValues = selectedValues.filter(v => v !== value);
+                            this.classList.remove("selected");
+                        } else {
+                            selectedValues.push(value);
+                            this.classList.add("selected");
+                        }
+            
+                        updateSelectedOptions();
+                    });
+                });
+            
+                function updateSelectedOptions() {
+                    let display = document.querySelector(".selected-options");
+                    if (selectedValues.length === 0) {
+                        display.textContent = "選択してください";
+                    } else {
+                        display.textContent = selectedValues.join(", ");
+                    }
+                    console.log("選択された値:", selectedValues);
+                }
+            
+                document.addEventListener("click", function(event) {
+                    let selectContainer = document.querySelector(".select-container");
+                    if (!selectContainer.contains(event.target)) {
+                        document.getElementById("custom-select").style.display = "none";
+                    }
+                });
+            </script>
+            
+        </section>
+        <br>
+        <br>
+        <div class="click_btn">
+            <button type="submit" class="custom-btn">
+                <img src="../static/images/img_mail.jpeg" alt="メールアイコン" class="btn-icon">
+                ご注文確定! ▸
+            </button>
+        </div>
+    </form>
+</main>
+{% endblock %}
