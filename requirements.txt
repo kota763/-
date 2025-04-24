@@ -1,4 +1,4 @@
-gunicorn==20.0.4
+gunicorn==23.0.0
 Flask==3.0.3     # 必ず必要なので記載する
 Flask-Session==0.8.0
 pandas==2.2.2
